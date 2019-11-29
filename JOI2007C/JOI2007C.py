@@ -18,6 +18,7 @@ sys.stdin=f
 # 以下ペースト可
 # index使って二分探索しようとしたけどindexの大小関係と数値の大小関係がことなるからダメだった
 # 実際のあたえられた数値で二分探索したらどうなるのか？半分にした値がエリアの値で表現出来ない場合に出来る範囲の度の値に振るかが問題になりそう
+#
 N, M = [int(item) for item in input().split()]
 point_list = [int(input()) for _ in range(N)]
 point_list.append(0)
