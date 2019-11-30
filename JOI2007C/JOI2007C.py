@@ -22,7 +22,7 @@ sys.stdin=f
 # この操作を最初の半分の組み合わせ分行うこれでO(root(N^4) * 残りの操作のオーダ)
 # 残りの半分からなるべく早く見つけないとTLEとなってしまう。（線形探索してしまったら全部を線形探索しているのと変わらなくなる）
 # 残りの半分は(リスト事態は前半の半分と同じだけど)順序のあるリストに出来るので二分探索する（オーダ 2logN）
-
+import bisect
 N, M = [int(item) for item in input().split()]
 point_list = [int(input()) for _ in range(N)]
 point_list.append(0)
