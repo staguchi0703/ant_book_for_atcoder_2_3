@@ -17,61 +17,24 @@ sys.stdin=f
 # %%
 # 以下ペースト可
 # index使って二分探索しようとしたけどindexの大小関係と数値の大小関係がことなるからダメだった
-# 実際のあたえられた数値で二分探索したらどうなるのか？半分にした値がエリアの値で表現出来ない場合に出来る範囲の度の値に振るかが問題になりそう
-#
+# 全パターンを計算すると10^12でTLE
+# 半分計算して組み合わせをだしておいて、残りの半分のなかで条件を満たす最大値を探す。
+# この操作を最初の半分の組み合わせ分行うこれでO(root(N^4) * 残りの操作のオーダ)
+# 残りの半分からなるべく早く見つけないとTLEとなってしまう。（線形探索してしまったら全部を線形探索しているのと変わらなくなる）
+# 残りの半分は(リスト事態は前半の半分と同じだけど)順序のあるリストに出来るので二分探索する（オーダ 2logN）
+
 N, M = [int(item) for item in input().split()]
 point_list = [int(input()) for _ in range(N)]
 point_list.append(0)
-point_list = sorted(point_list)
-print(point_list)
-N += 1
 
-high = N**4 -1
-low = 0
-
-# print('h', high)
-# print('l', low)
-
-def point_cal(point_list, my_index):
-
-    temp_index = []
-    for i in reversed(range(4)):
-        temp_index.append(my_index // N**i)
-        my_index = my_index % (N **i)
-
-
-    temp_index = temp_index[::-1]
-
-    print(temp_index)
-    temp_score = 0
-    for index in temp_index:
-        temp_score += point_list[index]
-    return temp_score
+half_comb_list = [point_list[i]+point_list[k] for i in range(len(point_list)) for k in range(i+1) if point_list[i]+point_list[k] <= M]
+half_comb_list.sort()
 
 res_list = []
+for first_val in half_comb_list:
+    second_gr_index = bisect.bisect_left(half_comb_list, M - first_val)
+    res = first_val + half_comb_list[second_gr_index-1]
+    res_list.append(res)
 
-while True:
-    mid = (high + low)//2
+print(max(res_list))
 
-    # print('----------------roop------')
-    # print('h', high)
-    # print('m', mid)
-    # print('l', low)
-
-    if mid == high or mid == low:
-        break
-
-    temp_score = point_cal(point_list, mid)
-
-    print(temp_score, mid)
-
-    if temp_score > M:
-        high = mid
-    elif temp_score <= M:
-        low = mid
-
-    res_list.append(temp_score)
-
-print(max([res for res in res_list if res <= M]))
-
-print('point_cal', point_cal(point_list, 442))
