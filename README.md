@@ -2,7 +2,10 @@
 
 ## はじめに
 
-[AtCoder 版！蟻本 (初級編)](https://qiita.com/drken/items/e77685614f3c6bf86f44)に[AtCoder](https://atcoder.jp/?lang=ja)を利用してジャッジできるアルゴリズムの良問が選別されている。
+[AtCoder 版！蟻本 (初級編)](https://qiita.com/drken/items/e77685614f3c6bf86f44)に蟻本記載例題の類似問題を[AtCoder](https://atcoder.jp/?lang=ja)XXXXXXXXXXXXXXXX]
+
+
+を利用してジャッジできるアルゴリズムの良問が選別されている。
 
 けんちょん (Otsuki)@drken氏に感謝。
 
