@@ -18,30 +18,17 @@ sys.stdin=f
 # 以下ペースト可
 N, L, T = [int(item) for item in input().split()]
 pos_list = [[int(item) for item in input().split()] for _ in range(N)]
-print(pos_list)
 
-# for pos, direction in pos_list:
-#     if direction == 1:
-#         pos = (pos + T) % L
-#         res_list.append(pos)
-
-#     else:
-#         pos = (pos -T) % L
-#         if pos < 0:
-#             pos += 8
-
-#         res_list.append(pos)
 num = 0
-
-
 next_list = []
 
 for i, item in enumerate(pos_list):
-    next_list.append([*item , i])
+    a, b = item
+    next_list.append([a, b, i])
 
-while T >= 0:
+while T >= 1:
     pos_list, next_list = next_list, []
-    print(pos_list)
+    # print(pos_list)
     for pos, direction, num in pos_list:
         if direction == 1:
             pos = (pos + 1) % L
@@ -62,12 +49,15 @@ while T >= 0:
         if next_list[i][1] == 1:
             if next_list[i][0] == (next_list[(i+1)%N][0] + 1) % L:
                 next_list[i][1], next_list[(i+1)%N][1] = next_list[(i+1)%N][1], next_list[i][1]
-                # next_list[i][2], next_list[(i+1)%N][2] = next_list[(i+1)%N][2], next_list[i][2]
+                next_list[i][0], next_list[(i+1)%N][0] = next_list[(i+1)%N][0], next_list[i][0]
         else:
             if next_list[i][0] == (next_list[(i-1)%N][0] - 1) % L:
                 next_list[i][1], next_list[(i-1)%N][1] = next_list[(i-1)%N][1], next_list[i][1]
-                # next_list[i][2], next_list[(i-1)%N][2] = next_list[(i-1)%N][2], next_list[i][2]
+                next_list[i][0], next_list[(i-1)%N][0] = next_list[(i-1)%N][0], next_list[i][0]
 
     T -= 1
 
-print(next_list)
+# print(next_list)
+
+for item in next_list:
+    print(item[0])
