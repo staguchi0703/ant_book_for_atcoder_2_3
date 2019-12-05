@@ -1,16 +1,17 @@
-# [やってみた]　AtCoder 版！蟻本 (初級編) [2-1 すべての基本 "全探索"]
+# [やってみた（苦戦中！）]　AtCoder 版！蟻本 (初級編) [2-1 すべての基本 "全探索"]
 
 ## はじめに
 
 筆者はAtCoderを取り組み始めたアラフォー・ザコーダである。
 
-[D問題をコンテスト中にACしたことがないので、特訓が必要である](https://qiita.com/tagtagtag/items/f9ae5a1a0c24d04ae923)
-
 [AtCoder 版！蟻本 (初級編)](https://qiita.com/drken/items/e77685614f3c6bf86f44)に蟻本記載例題の類似問題が記載されている。
 
 [AtCoder](https://atcoder.jp/?lang=ja)を利用してジャッジできるアルゴリズムの良問が選別されているので、初学者にうってつけである。
 
-けんちょん (Otsuki)@drken氏に感謝。
+上記記事著者である、けんちょん (Otsuki)@drken氏に感謝。
+
+筆者は[AtCoder 版！蟻本 (初級編)](https://qiita.com/drken/items/e77685614f3c6bf86f44)を頼りにスキルアップを図っている途中である。
+* [1 いざチャレンジ！でもその前に --- 準備編に取り組んだ過去記事](https://qiita.com/tagtagtag/items/eaa0655d26cdcbd5202e)
 
 
 ## 目的
@@ -21,6 +22,7 @@
 
 ## 今後
 
+* 2-1 の残り問題をこの記事に追加する
 * 2-2 猪突猛進！ "貪欲法"に挑戦する。
 
 
