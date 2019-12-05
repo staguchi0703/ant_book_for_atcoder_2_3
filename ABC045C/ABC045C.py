@@ -19,28 +19,22 @@ sys.stdin=f
 S = input()
 
 res_list = []
-def my_recursion(res):
-    if len(res) >= len(S):
-        return ''
+def my_recursion(res, i):
+    if i == len(S):
+        return
 
-    my_recursion(res + '0')
-    my_recursion(res + '+')
-    if len(res) == len(S)-1:
-        res_list.append(res)
+    my_recursion(res + S[i] + '-', i+1)
+    my_recursion(res + S[i] + '+', i+1)
+    # print(res)
+    if len(res) == 2*(len(S)-1):
+        res_list.append(res.replace('-', '') + S[-1])
 
     return res_list
-# print(my_recursion(''))
-# print(len(my_recursion('')))
-res_list = my_recursion('')
 
-temp_S_list = []
+# print(my_recursion('', 0))
+# print(len(my_recursion('', 0)))
 
-for item in res_list:
-    temp_S = ''
-    for i, j in enumerate(item):
-        temp_S += S[i]+j
-    temp_S += S[-1]
-    S_done_eval = eval(temp_S.replace('0', ''))
-    temp_S_list.append(S_done_eval)
+res_list = my_recursion('', 0)
+temp_S_list = [eval(item) for item in res_list]
 
 print(sum(temp_S_list))
