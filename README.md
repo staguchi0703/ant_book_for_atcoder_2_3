@@ -32,8 +32,7 @@
 
 ### 例題 2-1-1　部分和問題
 
-* AtCoder 
-  * [ABC 045 C - たくさんの数式](https://atcoder.jp/contests/arc061/tasks/arc061_a)
+#### [ABC 045 C - たくさんの数式](https://atcoder.jp/contests/arc061/tasks/arc061_a)
 
 * 方針
   * 数字の間に＋を入れよう。
@@ -119,3 +118,42 @@ temp_S_list = [eval(item) for item in res_list]
 
 print(sum(temp_S_list))
 ```
+
+
+#### [ABC 079 C - Train Ticket](https://atcoder.jp/contests/abc079/tasks/abc079_c)
+
+* 方針
+  * 数字の間に＋か-を入れよう。
+  * 上記ABC045Cと同じくbit全探索する
+
+ 
+
+* 実装
+  * 再帰関数版
+    * 再帰関数で数字の間に+をいれるか、-を入れるかの組み合わせをリストUP
+    * eval()で計算した結果と7を比較して見つかったら回答する
+
+
+```python
+ABCD = input()
+
+N = len(ABCD)
+
+
+for i in range(2**(N-1)):
+    temp_res = ''
+    for j in range(N-1):
+        temp_res += ABCD[j]
+        if ((i >> j) & 1):
+            temp_res += '+'
+        else:
+            temp_res += '-'
+    temp_res += ABCD[-1]
+
+    if eval(temp_res) == 7:
+        res = temp_res + '=7'
+        break
+
+print(res)
+```
+
