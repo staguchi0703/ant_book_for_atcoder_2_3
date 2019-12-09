@@ -20,34 +20,50 @@ D, G = [int(item) for item in input().split()]
 
 comp_bounas_list = [[int(item) for item in input().split()] for _ in range(D)]
 
-
-
-comp_prob_list = []
-
-bit_list = []
+comp_all = []
 
 for i in range(2**D):
-    comp_prob = []
-    total_prob_n = 0
-    total_point = 0
-    bit_flag = ''
+    temp = []
     for j in range(D):
-        if ((i >> j) & 1 == 1):
-            total_prob_n += comp_bounas_list[j][0]
-            total_point += comp_bounas_list[j][0]*(j+1)*100 + comp_bounas_list[j][1]
-            bit_flag +='1'
+        if ((i >> j) & 1) == 1:
+            temp.append(1)
         else:
-            comp_prob.append([0, 0])
-            bit_flag +='0'
+            temp.append(0)
+    comp_all.append(temp)
 
-    comp_prob_list.append([total_prob_n, total_point])
-    bit_list.append(bit_flag)
+print(comp_bounas_list)
+print(comp_all)
 
-print(comp_prob_list)
-print(bit_list)
+full_num_list = [item[0] for item in comp_bounas_list]
 
-# どのbitが立ってるときターゲット以上になるか？
-# 一段少ないとこをとったとき、上より少ない数でターゲットをとれるか？
+each_comp_point = []
+for i, item in enumerate(comp_bounas_list):
+    each_comp_point.append((i+1)*100*item[0]+item[1])
 
+print(full_num_list)
+print(each_comp_point)
+
+
+temp_point_list = []
+
+for each_pattern in comp_all:
+    temp_num = 0
+    temp_point = 0
+    for j, item in enumerate(each_pattern):
+            if item:
+                temp_num += full_num_list[j]
+                temp_point += each_comp_point[j]
+
+    temp_point_list.append([temp_num, temp_point, each_pattern]) 
+
+temp_point_list.sort(key= lambda x:x[1])
+
+print(temp_point_list)
+
+over_combo = min([item for item in temp_point_list if item[1] >= G], key= lambda x:x[1])
+under_combo = max([item for item in temp_point_list if item[1] < G], key= lambda x:x[1]) 
+
+print(over_combo)
+print(under_combo)
 
 
