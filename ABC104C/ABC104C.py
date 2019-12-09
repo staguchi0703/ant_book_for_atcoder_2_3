@@ -80,7 +80,7 @@ for temp_combo in under_combo:
 
     # print(temp_bit_list)
     for j, item in enumerate(temp_bit_list):
-        for _ in range(1, comp_bounas_list[j][0]):
+        for _ in range(1, comp_bounas_list[D-j-1][0]):
             if item==0:
                 temp_res_point += (D -j)*100
                 temp_res_num += 1
