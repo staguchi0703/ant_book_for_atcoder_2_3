@@ -73,24 +73,21 @@ temp_res_list = []
 is_search = True
 
 for temp_combo in under_combo:
-    temp_bit_list = temp_combo[2][::-1]
+    temp_bit_list = temp_combo[2]
     temp_res_point = temp_combo[1]
     temp_res_num = temp_combo[0]
     # print(temp_combo)
 
     # print(temp_bit_list)
-    for j, item in enumerate(temp_bit_list):
-        for _ in range(1, comp_bounas_list[D-j-1][0]):
+    for j, item in reversed(list(enumerate(temp_bit_list))):
+        for _ in range(1, comp_bounas_list[j][0]):
             if item==0:
-                temp_res_point += (D -j)*100
+                temp_res_point += (j+1)*100
                 temp_res_num += 1
 
             if temp_res_point >= G:
                 temp_res_list.append([temp_res_num, temp_res_point])
-                is_search = False
-                break  
-        if not is_search:
-            break
+                break
 
 # print(temp_res_list)
 
