@@ -56,12 +56,15 @@ for each_pattern in comp_all:
 
     temp_point_list.append([temp_num, temp_point, each_pattern]) 
 
-temp_point_list.sort(key= lambda x:x[1])
-
 # print(temp_point_list)
+# overの物を解候補にリスト化する
+over_list = [item for item in temp_point_list if item[1] >= G]
 
-# justの物を解候補にリスト化する
-over_combo = min([item for item in temp_point_list if item[1] >= G], key= lambda x:x[1])
+# print(over_list)
+# 全bitが立っている最大値はターゲットを超えているため必ず値を持つ
+over_combo = min(over_list, key = lambda x:x[0])
+# print(over_combo)
+
 # underのものを解候補にリスト化する
 under_combo = [item for item in temp_point_list if item[1] < G]
 
@@ -81,6 +84,7 @@ for temp_combo in under_combo:
     # print(temp_bit_list)
     for j, item in reversed(list(enumerate(temp_bit_list))):
         for _ in range(1, comp_bounas_list[j][0]):
+            # print(temp_res_point)
             if item==0:
                 temp_res_point += (j+1)*100
                 temp_res_num += 1
@@ -90,11 +94,14 @@ for temp_combo in under_combo:
                 break
 
 # print(temp_res_list)
-
-res_candi = min(temp_res_list, key=lambda x:x[0])
-
+# きっかりコンプすれば必ずターゲットを超える場合、値を持たない場合がある。
+# ダミーでres_candiに全bitの立った値を入れておく
+if temp_res_list != []:
+    res_candi = min(temp_res_list, key=lambda x:x[0])
+else:
+    res_candi = temp_point_list[-1]
 
 if over_combo[0] <= res_candi[0]:
     print(over_combo[0])
 else:
-    print( res_candi[0])
+    print(res_candi[0])
