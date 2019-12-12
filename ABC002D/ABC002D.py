@@ -22,7 +22,17 @@ relation_list = [[int(item) for item in input().split()] for _ in range(M)]
 print(N,M)
 print(relation_list)
 
-# 
-for i in range(1, N+1):
-    for j in range(i+1, N+1):
-        print(i,'->',j)
+combo_list = []
+
+temp_combo_list = []
+for i in range(2**N):
+    print(i)
+    temp_combo = []
+
+    # 各人について関係がある人をリスト化していく
+    # まだできていない
+    for j in range(N):
+        if ((i >> j) & 1) == 1:
+            temp_combo.append(j)
+    print(temp_combo)
+    temp_combo_list.append(temp_combo)
