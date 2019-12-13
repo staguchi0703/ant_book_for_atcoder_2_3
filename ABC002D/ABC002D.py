@@ -24,15 +24,26 @@ print(relation_list)
 
 combo_list = []
 
-temp_combo_list = []
 for i in range(2**N):
-    print(i)
-    temp_combo = []
+    bit_ex = print(format(i, 'b').zfill(N))
 
+    temp_combo_list = []
     # 各人について関係がある人をリスト化していく
     # まだできていない
-    for j in range(N):
-        if ((i >> j) & 1) == 1:
-            temp_combo.append(j)
-    print(temp_combo)
-    temp_combo_list.append(temp_combo)
+    for k in range(N):
+        temp_combo = []
+        for j in range(k,N):
+            if ((i >> j) & 1) == 1 and ((i >> k) & 1) == 1:
+                temp_combo.append([k+1, j+1])
+        if temp_combo != []:
+            print(temp_combo[1:])
+            temp_combo_list += temp_combo[1:]
+    combo_list.append(temp_combo_list)
+print('ans check -------------------------------')
+
+print(combo_list[7])
+
+if relation_list in temp_combo_list:
+    print(relation_list)
+else:
+    print('no way!')
