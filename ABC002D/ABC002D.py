@@ -21,7 +21,7 @@ relation_list = [[int(item) for item in input().split()] for _ in range(M)]
 relation_list.sort(key= lambda x:x[0])
 
 # print(N,M)
-print(relation_list)
+# print(relation_list)
 
 combo_list = []
 
@@ -39,26 +39,22 @@ for i in range(2**N):
         if temp_combo != []:
             # print(temp_combo[1:])
             temp_combo_list += temp_combo[1:]
-    combo_list.append([temp_combo_list, i])
+    combo_list.append([temp_combo_list, format(i, 'b').count('1')])
 # print('ans check -------------------------------')
-
 # print(combo_list)
 
 res_list = []
-for item in combo_list:
-    # print(item[0])
 
-    is_found = 1
-    for relation in relation_list:
-        if relation in item[0]:
+for candi_item_combo, candi_item_num in combo_list:
+    is_found = True
+    for item in candi_item_combo:
+        if item in relation_list:
             pass
         else:
-            is_found = 0
-            break
-    
+            is_found = False
     if is_found:
-        res_list.append(format(item[1],'b').count('1'))
-        print(bin(item[1]))
+        # print(candi_item_combo)
+        res_list.append(candi_item_num)
 
 if res_list == []:
     print(1)
