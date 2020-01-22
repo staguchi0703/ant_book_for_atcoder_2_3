@@ -16,5 +16,42 @@ sys.stdin=f
 ##################################
 # %%
 # 以下ペースト可
-N, M = [int(item) for item in input().split()]
-print(N,M)
+N, W = [int(item) for item in input().split()]
+item_list = [[int(item) for item in input().split()] for _ in range(N)]
+print(item_list)
+
+dp = [[0]* (N+1)] * (W+1)
+
+
+for i in range(0, N):
+    for j in range(0, W+1):
+
+        temp_w = item_list[i][1]
+
+        if j <= temp_w:
+            print('A',i, j, dp[j][i])
+            dp[j][i+1] = dp[j][i]
+
+        else:
+
+            dp[j][i+1] = max(dp[j - temp_w][i] + item_list[i][0], dp[j][i])
+            print('B',i+1, j, dp[j][i+1])  
+            print(dp)
+
+        print('x', i,j, dp[j][i])
+        # print(item_list[i][0], item_list[i][1])
+
+
+        """
+                        重さを引いて足して結局ｊになったときの価値（i番目のものが重いとベースの価値が低くなるかも）と
+                        一つ少ない個数（重くて価値のあるもので重さがｊになっているかもしれない）と比較して、価値が大きい方を選ぶ
+        """
+print(dp)
+#########
+
+dp = [[0]* (N+1)] * (W+1)
+dp[0][3] = 8
+
+dp[0]
+
+print(dp, dp[0])
