@@ -18,14 +18,17 @@ sys.stdin=f
 # 以下ペースト可
 N = int(input())
 line = [int(item) for item in input().split()]
+sum_max = sum(line)
 
-dp = [[0 for i in range(N+1)] for _ in range(N*100 +1)]
+dp = [[0 for k in range(sum_max +1)] for i in range(N+1)]
+dp[0] = [1] + [0 for _ in range(sum_max)]
+# print(dp)
+
 
 for i in range(N):
-    for j in range(N*100 +1):
-        if j < line[i]:
-            dp[j][i+1] = 0
-        else:
-            dp[j][i+1] = max(dp[j][i], dp[j - line[i]][i] + 1)
+    for j in range(sum_max +1):
+        if dp[i][j] == 1 and j - line[i] <= sum_max:
+            dp[i+1][j+line[i]] = 1
+            print('encount')
 
 print(dp)
