@@ -33,7 +33,20 @@
   * 入れらる
 * 実装
   * 二次元リストを`some_list[a][b]= number`と言った具合にスライスで代入しようとすると、`some_list[a] = [, , number, , ] * b`といった具合になり狙った座標だけ書き換える事が出来なかった。
+  * 新規記事を起こして検証をする
    
+
+```python
+
+```
+
+### [TDPC A コンテスト](https://atcoder.jp/contests/tdpc/tasks/tdpc_contest)
+
+* 方針
+  * 数字の間に＋を入れよう。
+  * 入れらる
+* 実装
+  * 二次
 
 ```python
 
