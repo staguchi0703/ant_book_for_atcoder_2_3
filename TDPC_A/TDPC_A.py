@@ -28,7 +28,7 @@ dp[0] = [1] + [0 for _ in range(sum_max)]
 for i in range(N):
     for j in range(sum_max +1):
         if dp[i][j] == 1 and j - line[i] <= sum_max:
+            dp[i+1][j] = dp[i][j]
             dp[i+1][j+line[i]] = 1
-            print('encount')
 
-print(dp)
+print(dp[N].count(1))
