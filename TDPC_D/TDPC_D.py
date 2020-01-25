@@ -16,17 +16,23 @@ sys.stdin=f
 ##################################
 # %%
 # 以下ペースト可
+# res1 = Dの倍数の個数
+# 回答は　Dの倍数の確率なので計算して出力する
 import math
 N, D= [int(item) for item in input().split()]
+max_num = int(math.sqrt(6**N))
 
-dp = [0 for _ in range(int(math.sqrt(D)+1))]
-dp[1] = 1
+dp = [[1 if m == D else 0 for m in range(max_num+1)] for _ in range(N+1)]
+cnt = 0
 
 for i in range(N):
-    for num in range(1,7):  
-        for j in range(int(math.sqrt(D)/num)+1):
-            if dp[j] == 1:
-                dp[j*num] = 1
+    for j in range(max_num+1):
+        for k in range(1,7):
+            dp[i+1][j] = dp[i][j]
+            if dp[i][j] == 1 and j*k < max_num:
+                index_1  = j*k
+                print(i,j,i*j, max_num)
+                dp[i+1][index_1] = 1
+                cnt += 1
 
-print(dp)
-
+print(cnt)

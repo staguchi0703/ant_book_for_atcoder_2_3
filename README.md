@@ -51,3 +51,17 @@
 ```python
 
 ```
+
+
+### [TDPC D コンテスト](https://atcoder.jp/contests/tdpc/tasks/tdpc_contest)
+
+* 方針
+  * 数字の間に＋を入れよう。
+  * 入れらる
+* 実装
+  * リスト内包表記を使った、3項演算子の書き方
+  `some_list = [1 if m == D else 0 for i in range(n)]`
+
+```python
+
+```
