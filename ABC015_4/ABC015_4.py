@@ -23,7 +23,7 @@ ss_list = [[int(item) for item in input().split()] for _ in range(N)]
 dp = [[[0 for _ in range(N+1)] for _ in range(K+1)] for _ in range(W+1)]
 
 for i in range(W+1):
-    for j in range(K+1):
+    for j in range(K):
         for k in range(N):
             if i + ss_list[k][0] < W:
                 dp[i][j][k] = max(dp[i - ss_list[k-1][0]][j-1][k-1] + ss_list[k-1][1], dp[i][j][k-1])
