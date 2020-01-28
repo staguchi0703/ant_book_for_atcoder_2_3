@@ -84,5 +84,11 @@
 ### [abc015 4 コンテスト](https://atcoder.jp/contests/abc015/tasks/abc015_4)
 
 
+### [JOI 2012 予選 D 暑い日々　(AOJ 0579 に同じ) ](https://atcoder.jp/contests/joi2013yo/tasks/joi2013yo_d)
 
+pass
+
+### [TDPC E 数](https://atcoder.jp/contests/tdpc/tasks/tdpc_number)
+
+pass
 
