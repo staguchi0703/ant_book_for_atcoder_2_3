@@ -20,13 +20,13 @@ W = int(input())
 N, K = [int(item) for item in input().split()]
 ss_list = [[int(item) for item in input().split()] for _ in range(N)]
 
-dp = [[0 for _ in range(W+1)] for _ in range(K+1)]
+dp = [[[0 for _ in range(N+1)] for _ in range(K+1)] for _ in range(W+1)]
 
-for i in range(K):
-    for j in range(W+1):
-        for l in range(N):
-            if ss_list[l][0] < j + ss_list[l][0] <= W:
-                dp[i+1][j] = max(dp[i][j - ss_list[l][0]] + ss_list[l][1], dp[i][j])
-            elif ss_list[l][0] < j:
-                dp[i+1][j] = dp[i][j]
+for i in range(W+1):
+    for j in range(K+1):
+        for k in range(N):
+            if i + ss_list[k][0] < W:
+                dp[i][j][k] = max(dp[i - ss_list[k-1][0]][j-1][k-1] + ss_list[k-1][1], dp[i][j][k-1])
+            else:
+                dp[i][j][k] = dp[i][j][k-1]
 print(dp)
